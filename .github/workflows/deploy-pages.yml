@@ -1,8 +1,9 @@
 name: Deploy pages
 
 on:
-  push:
   workflow_dispatch:
+  schedule:
+    - cron: "26 9 */3 * *"
 permissions:
   contents: read
   pages: write
