@@ -1,5 +1,7 @@
 requirements.txt:
-  - requirements.txt
+  - changed-files:
+    - any-glob-to-any-file: requirements.txt
 
 gh:
-  - .github/**
+  - changed-files:
+    - any-glob-to-any-file: .github/**
