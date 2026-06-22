@@ -6,7 +6,16 @@ import requests
 
 def check_for_updates():
     global done, upd_request
-    upd_request = requests.get("https://raw.githubusercontent.com/barsik0396/obje/refs/heads/main/update.json")
+    try:
+        upd_request = requests.get("https://raw.githubusercontent.com/barsik0396/obje/refs/heads/main/update.json")
+    except requests.exceptions.ConnectionError:
+        done = True
+        print("\r\x1b[0mFailed to download file (py-error requests.exceptions.ConnectionError). Check internet connection.")
+        sys.exit(1)
+    except Exception as e:
+        done = True
+        print(f"\r\x1b[0mFailed to download file (py-error {Exception}).")
+        sys.exit(1)
     done = True
 
 def init():
@@ -30,7 +39,11 @@ def init():
                         if done: 
                             break
                         print(f"\r\x1b[96m{item}\x1b[36m", end="", flush=True)
-                        time.sleep(0.1)
+                        try:
+                            time.sleep(0.1)
+                        except KeyboardInterrupt:
+                            print("\r           \r\x1b[0m", end="")
+                            sys.exit(0)
                 if upd_request.status_code == 404:
                     print("\r\x1b[1;31m✗\x1b[0;91m Server returned 404")
                     sys.exit(1)
