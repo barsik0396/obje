@@ -5,7 +5,7 @@ import requests
 import json
 import threading
 
-# update checker
+# -- update checker --
 def check_for_updates():
     global done, upd_request
     try:
@@ -20,6 +20,7 @@ def check_for_updates():
         sys.exit(1)
     done = True
 
+# -- main update logic --
 def update():
     global done
     done = False
