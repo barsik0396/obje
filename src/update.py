@@ -32,14 +32,14 @@ def update():
             for item in frames:
                 if done: 
                     break
-            print(f"\r\x1b[96m{item}\x1b[36m", end="", flush=True)
-            try:
-                time.sleep(0.1)
-            # on KeyboardInterrupt (ctrl+c)
-            except KeyboardInterrupt:
-                print("\r   \r\x1b[0m", end="")
-                sys.exit(0)
-
+                print(f"\r\x1b[96m{item}\x1b[0m", end="", flush=True)
+                try:
+                    time.sleep(0.1)
+                # on KeyboardInterrupt (ctrl+c)
+                except KeyboardInterrupt:
+                    print("\r   \r\x1b[0m", end="")
+                    sys.exit(0)
+        print("\r \r", end="")
         # if 404 -> show error and exit
         if upd_request.status_code == 404:
             print("\r\x1b[1;31m✗\x1b[0;91m Server returned 404")
