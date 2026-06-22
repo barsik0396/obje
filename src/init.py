@@ -14,7 +14,7 @@ def check_for_updates():
         sys.exit(1)
     except Exception as e:
         done = True
-        print(f"\r\x1b[0mFailed to download file (py-error {Exception}).")
+        print(f"\r\x1b[0mFailed to download file (py-error {e}).")
         sys.exit(1)
     done = True
 
