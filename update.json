@@ -1,0 +1,30 @@
+{
+    "latest": {
+        "nightly": "v0.1.0",
+        "pre": "v0.1.0",
+        "stable": "v0.1.0"
+    },
+    "download": {
+        "nightly": {
+            "tar-xz": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0.tar.xz",
+            "deb": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0.deb",
+            "exe": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-installer.exe",
+            "signatures-json": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-signatures.json",
+            "signatures-txt": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-signatures.txt"
+        },
+        "pre": {
+            "tar-xz": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0.tar.xz",
+            "deb": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0.deb",
+            "exe": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-installer.exe",
+            "signatures-json": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-signatures.json",
+            "signatures-txt": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-signatures.txt"
+        },
+        "stable": {
+            "tar-xz": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0.tar.xz",
+            "deb": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0.deb",
+            "exe": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-installer.exe",
+            "signatures-json": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-signatures.json",
+            "signatures-txt": "https://github.com/barsik0396/obje/releases/download/v0.1.0/obje-v0.1.0-signatures.txt"
+        }
+    }
+}
