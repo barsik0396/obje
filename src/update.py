@@ -1,4 +1,9 @@
-import requests, sys, threading, time, os
+import os
+import sys
+import time
+import requests
+import json
+import threading
 
 # update checker
 def check_for_updates():
@@ -57,6 +62,8 @@ def update():
     dl_stable = data["download"]["stable"]
     dl_pre = data["download"]["stable"]
     dl_nightly = data["download"]["stable"]
+
+    print(f"[dbg] {latest_stable}=latest_stable {latest_pre}=latest_pre {latest_nightly}=latest_nightly {dl_stable}=dl_stable {dl_pre}=dl_pre {dl_nightly}=dl_nightly")
 
     # if latest_(channel) == (installed version) -> ok
     # TODO: finish this part
