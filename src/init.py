@@ -4,6 +4,7 @@ import time
 import threading
 import requests
 
+# update checker
 def check_for_updates():
     global done, upd_request
     try:
@@ -18,7 +19,9 @@ def check_for_updates():
         sys.exit(1)
     done = True
 
+# init
 def init():
+    # -- help --
     if len(sys.argv) < 2:
         print("Obje - \x1b[37;1mModern and fast build system\x1b[0m")
         print("")
@@ -28,12 +31,14 @@ def init():
         print("  \x1b[37;1mCOMMANDS\x1b[0m")
         print("    update                   Update Obje")
     else:
+        # -- update --
         if sys.argv[1] == "update":
             global done
             done = False
             frames = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏']
             threading.Thread(target=check_for_updates, daemon=False).start()
             try:
+                # while not completed -> show spinner
                 while not done:
                     for item in frames:
                         if done: 
@@ -41,16 +46,23 @@ def init():
                         print(f"\r\x1b[96m{item}\x1b[36m", end="", flush=True)
                         try:
                             time.sleep(0.1)
+                        # on KeyboardInterrupt (ctrl+c)
                         except KeyboardInterrupt:
                             print("\r           \r\x1b[0m", end="")
                             sys.exit(0)
+
+                # if 404 -> show error and exit
                 if upd_request.status_code == 404:
                     print("\r\x1b[1;31m✗\x1b[0;91m Server returned 404")
                     sys.exit(1)
+                
+                # TODO: finish this part
                 print("\r\x1b[1;32m✔\x1b[0;92m You have latest version of Obje!\x1b[0m")
+            # -- if error --
             except Exception:
                 try:
                     print(f"\r\x1b[0m{" " * os.get_terminal_size().columns}\r", end="")
                 except Exception:
+                    # fallback
                     print("\r\x1b[0m                                       \r", end="")
                 sys.exit(1)
