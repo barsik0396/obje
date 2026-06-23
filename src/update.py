@@ -4,13 +4,18 @@ import time
 import requests
 import json
 import threading
+from . import config
+from .dbg import debug as dbg
 
 # -- update checker --
 def check_for_updates():
+    dbg("upd: initing")
     global done, upd_request
+    dbg("upd: downloading update.json")
     try:
         upd_request = requests.get("https://raw.githubusercontent.com/barsik0396/obje/refs/heads/main/update.json")
     except requests.exceptions.ConnectionError:
+        dbg("err")
         done = True
         print("\r\x1b[0mFailed to download file (py-error requests.exceptions.ConnectionError). Check internet connection.")
         sys.exit(1)
@@ -18,20 +23,26 @@ def check_for_updates():
         done = True
         print(f"\r\x1b[0mFailed to download file (py-error {e}).")
         sys.exit(1)
+    dbg("upd: done downloading update.json")
     done = True
 
 # -- main update logic --
 def update():
+    config.load()
+    dbg("initing")
     global done
     done = False
     frames = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏']
+    dbg("starting thread")
     threading.Thread(target=check_for_updates, daemon=False).start()
     try:
+        dbg("showing spinner")
         # while not completed -> show spinner
         while not done:
             for item in frames:
                 if done: 
                     break
+                dbg(f"\r{config.data["debugger"]["prefix"]}spinner: next frame")
                 print(f"\r\x1b[96m{item}\x1b[0m", end="", flush=True)
                 try:
                     time.sleep(0.1)
@@ -53,20 +64,35 @@ def update():
             print("\r\x1b[0m   \r", end="")
             sys.exit(1)
 
-
+    dbg("dt: loading data")
     # --- get update data ---
     data = json.loads(upd_request.content)
+    dbg("dt-pe: latest stable")
     latest_stable = data["latest"]["stable"]
+    dbg("dt-pe: latest pre")
     latest_pre = data["latest"]["pre"]
+    dbg("dt-pe: latest nightly")
     latest_nightly = data["latest"]["nightly"]
 
+    dbg("dt-pe: dl stable")
     dl_stable = data["download"]["stable"]
+    dbg("dt-pe: dl pre")
     dl_pre = data["download"]["stable"]
+    dbg("dt-pe: dl nightly")
     dl_nightly = data["download"]["stable"]
 
-    print(f"[dbg] {latest_stable}=latest_stable {latest_pre}=latest_pre {latest_nightly}=latest_nightly {dl_stable}=dl_stable {dl_pre}=dl_pre {dl_nightly}=dl_nightly")
+    dbg(f"dt-data: full = {data}")
+    dbg(f"dt-data: latest_stable = {latest_stable}")
+    dbg(f"dt-data: latest_pre = {latest_pre}")
+    dbg(f"dt-data: latest_nightly = {latest_nightly}")
+    dbg(f"dt-data: dl_stable = {dl_stable}")
+    dbg(f"dt-data: dl_pre = {dl_pre}")
+    dbg(f"dt-data: dl_nightly = {dl_nightly}")
+    
+    
 
     # if latest_(channel) == (installed version) -> ok
     # TODO: finish this part
+    dbg("hi")
     if latest_stable == "v0.1.0":
         print("\r\x1b[1;32m✔\x1b[0;92m You have latest version of Obje!\x1b[0m")
