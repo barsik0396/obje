@@ -1,0 +1,11 @@
+{
+    "_app": {
+        "version": "v0.1.0",
+        "config-version": "v1"
+    },
+    "debugger": {
+        "enabled": true,
+        "prefix": ""
+    },
+    "updates-channel": "nightly"
+}
