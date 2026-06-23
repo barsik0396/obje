@@ -19,7 +19,7 @@ def _lconf(path):
         print("=== \x1b[1;31mObjeconf crashed\x1b[0m ===")
         print(f"Date: {dt.datetime.now()}")
         print(f"Error: {e}")
-        print(f"Crashcode: 5d40n")
+        print("Crashcode: 5d40n")
         print("See \x1b[94;1m\u001b]8;;https://barsik0396.github.io/obje/crashcode/5d40n\u001b\\documentation\u001b]8;;\u001b\\\x1b[0m for more details.")
         sys.exit(1)
 
