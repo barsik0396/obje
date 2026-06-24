@@ -94,7 +94,7 @@ def update():
 
     # -- update installer --
     # TODO: finish this part
-    if not config.data["updates-channel"] in "nightly pre stable":
+    if config.data["updates-channel"] not in "nightly pre stable":
         print("error: ...")
         sys.exit(1)
     ch = config.data["updates-channel"]

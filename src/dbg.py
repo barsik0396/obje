@@ -1,5 +1,6 @@
 from . import config
-import os, sys
+import os
+import sys
 
 def debug(text):
     if os.environ.get("OBJE_DEBUGGER_ENABLED", "false") == "false":
