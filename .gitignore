@@ -5,3 +5,4 @@ __pycache__/
 *.exe
 build/
 dist/
+*.o
