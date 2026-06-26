@@ -1,0 +1,33 @@
+{
+    "name": "Default",
+    "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/python": {
+            "version": "3.14.6",
+            "toolsToInstall": "",
+            "optimize": true
+        }
+    },
+    "containerEnv": {
+        "OBJE_DEBUGGER_ENABLED": "true"
+    },
+    "forwardPorts": [8080, 5432],
+    "portsAttributes": {
+        "8080": { "label": "App", "onAutoForward": "notify" }
+    },
+    "onCreateCommand": "pip install -r requirements.txt",
+    "postStartCommand": "echo 'container started :)'",
+    "remoteUser": "barsik0396",
+    "customizations": {
+        "vscode": {
+            "extensions": ["ms-python.python", "fill-labs.dependi", "bierner.emojisense", "usernamehw.errorlens", "pkief.material-icon-theme"],
+            "settings": {
+                "editor.formatOnSave": true,
+                "python.defaultInterpreterPath": "/usr/bin/python3",
+                "workbench.iconTheme": "material-icon-theme"
+            }
+        }
+    },
+  "runArgs": ["--shm-size=512m"]
+}
