@@ -12,10 +12,6 @@
     "containerEnv": {
         "OBJE_DEBUGGER_ENABLED": "true"
     },
-    "forwardPorts": [8080, 5432],
-    "portsAttributes": {
-        "8080": { "label": "App", "onAutoForward": "notify" }
-    },
     "onCreateCommand": "pip install -r requirements.txt",
     "postStartCommand": "echo 'container started :)'",
     "remoteUser": "barsik0396",
