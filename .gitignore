@@ -1,13 +1,29 @@
+# --------------
+# cache and venv
+# --------------
 .ruff_cache/
 venv/
 __pycache__/
+
+# --------
+# binaries
+# --------
 *.bin
 *.exe
 build/
 dist/
 *.o
+
+# --------
+# archives
+# --------
 *.deb
 *.zip
 *.tar*
 *.gz
 *.rpm
+
+# -------
+# folders
+# -------
+extensions/
